@@ -1,12 +1,12 @@
-NAME := Bureaucrat
+NAME := converter
 
 INCLUDE_DIR := include
 SRC_DIR := src
 OBJ_DIR := objs
 
-SOURCE := $(addprefix $(SRC_DIR)/, main.cpp Bureaucrat.cpp)
+SOURCE := main.cpp $(addprefix $(SRC_DIR)/, ScalarConverter.cpp)
 
-HEADER := $(addprefix $(INCLUDE_DIR)/, Bureaucrat.hpp)
+HEADER := $(addprefix $(INCLUDE_DIR)/, ScalarConverter.hpp)
 
 
 OBJS := $(SOURCE:%.cpp=$(OBJ_DIR)/%.o)
@@ -37,9 +37,5 @@ re: fclean all
 debug_val: CC_FLAG += -g
 debug_val: re
 	./$(NAME)
-
-# debug_san: CC_FLAG = -std=c++98 -g -L/Users/ytoshihi/LeakSanitizer -llsan
-# debug_san: re
-# 	./$(NAME)
 
 .PHONY: all clean fclean re debug
