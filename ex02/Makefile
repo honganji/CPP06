@@ -1,12 +1,12 @@
-NAME := serializer
+NAME := identype
 
 INCLUDE_DIR := include
 SRC_DIR := src
 OBJ_DIR := objs
 
-SOURCE := main.cpp $(addprefix $(SRC_DIR)/, Serializer.cpp)
+SOURCE := main.cpp $(addprefix $(SRC_DIR)/, function.cpp)
 
-HEADER := $(addprefix $(INCLUDE_DIR)/, Serializer.hpp)
+HEADER := $(addprefix $(INCLUDE_DIR)/, Base.hpp A.hpp B.hpp C.hpp)
 
 
 OBJS := $(SOURCE:%.cpp=$(OBJ_DIR)/%.o)
