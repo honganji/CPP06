@@ -2,11 +2,10 @@
 
 void ScalarConverter::_outputChar(std::string str)
 {
-	bool isNum = false;
 	std::cout << "char: ";
 	if (str.length() == 1)
 	{
-		if (std::isdigit(str[0]))
+		if (std::isprint(str[0]))
 			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << str << std::endl;
@@ -17,33 +16,62 @@ void ScalarConverter::_outputChar(std::string str)
 			if (std::isdigit(str[i]))
 			{
 				std::cout << "'" << "*" << "'" << std::endl;
-				isNum = true;
-				break ;
+				return ;
 			}
-		if (!isNum)
-			std::cout << "impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 }
 
 void ScalarConverter::_outputInt(std::string str)
 {
-	std::cout << "char: ";
-	if (str.length() == 1)
+	std::cout << "int: ";
+	try
 	{
-		std::cout << str << std::endl;
+		std::cout << std::stoi(str) << std::endl;
 	}
-	// else
-	// 	std::cout << "impossible" << std::endl;
+	catch(const std::invalid_argument& e)
+	{
+		std::cout << "impossible" << std::endl;
+	}
+	catch(const std::out_of_range& e)
+	{
+		std::cout << "out of range" << std::endl;
+	}
 }
 
 void ScalarConverter::_outputFloat(std::string str)
 {
-	std::cout << str << std::endl;
+	std::cout << "float: ";
+	try
+	{
+		std::cout << std::fixed << std::setprecision(1) << std::stof(str);
+		std::cout << "f" << std::endl;
+	}
+	catch(const std::invalid_argument& e)
+	{
+		std::cout << "impossible" << std::endl;
+	}
+	catch(const std::out_of_range& e)
+	{
+		std::cout << "out of range" << std::endl;
+	}
 }
 
 void ScalarConverter::_outputDouble(std::string str)
 {
-	std::cout << str << std::endl;
+	std::cout << "double: ";
+	try
+	{
+		std::cout << std::stod(str) << std::endl;
+	}
+	catch(const std::invalid_argument& e)
+	{
+		std::cout << "impossible" << std::endl;
+	}
+	catch(const std::out_of_range& e)
+	{
+		std::cout << "out of range" << std::endl;
+	}
 }
 
 void ScalarConverter::convert(std::string str)
