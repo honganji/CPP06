@@ -37,16 +37,22 @@ static bool isTypeC(Base *p)
 
 Base *generate(void)
 {
-	static int index = 0;
+	// static int index = 0;
+	static bool seeded = false;
+	int index = 0;
+	if (!seeded)
+	{
+		srandom(time(NULL));
+		seeded = true;
+	}
 	Base *(*creators[])() = {
 		createA,
 		createB,
-		createC
-	};
-
-	if (index >= 3)
-		index = 0;
-	return (creators[index++]());
+		createC};
+	char alphs[]  = {'A', 'B', 'C'};
+	index = random() % 3;
+	std::cout << "Class " << alphs[index] << " is created!" << std::endl;
+	return (creators[index]());
 }
 
 void identify(Base *p)

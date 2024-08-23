@@ -12,9 +12,9 @@ int main()
 		Base *base1;
 		Base *base2;
 		base1 = generate();
+		identify(base1);
 		base2 = generate();
 		Base &base3 = *base2;
-		identify(base1);
 		identify(base3);
 	}
 	std::cout << "\033[31m--------------------------------------------------------\033[0m" << std::endl << std::endl;

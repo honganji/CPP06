@@ -2,6 +2,8 @@
 # define BASE_H
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class Base
 {	
